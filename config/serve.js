@@ -9,16 +9,10 @@ module.exports.tasks = {
         }
     },
     watchify: {
-        options: {
-            // defaults options used in b.bundle(opts)
-            detectGlobals: true,
-            insertGlobals: false,
-            ignoreMissing: false,
-            debug: false,
-            standalone: false,
-            keepalive: false
-        },
         server: {
+            options: {
+                debug: true
+            },
             src: './<%= paths.app %>/applications/{,**/}*.js',
             dest: './<%= paths.server %>/scripts/index.js'
         }
@@ -34,6 +28,8 @@ module.exports.tasks = {
                 src: [
                     '<%= paths.server %>/styles/main.css',
                     '<%= paths.server %>/scripts/index.js',
+                    '<%= paths.server %>/index.html',
+                    'Gruntfile.js'
                 ]
             }
         }
@@ -56,12 +52,13 @@ module.exports.tasks = {
                 spawn: false
             }
         },
-        gruntfile: {
-            files: ['Gruntfile.js']
+        index: {
+            files: ['<%= paths.app %>/index.html'],
+            tasks: 'copy:server'
         }
     },
     concurrent: {
-        server: ['libsass:server', 'copy:server']
+        server: ['libsass:server', 'copy:server', 'watchify:server', ]
     },
     copy: {
         server: {
@@ -70,6 +67,11 @@ module.exports.tasks = {
                 cwd: '<%= paths.app %>',
                 src: 'index.html',
                 dest: '<%= paths.server %>'
+            }, {
+                expand: true,
+                cwd: '<%= paths.app %>/assets',
+                src: '**/*',
+                dest: '<%= paths.server %>/assets'
             }]
         }
     },
@@ -81,5 +83,11 @@ module.exports.tasks = {
             src: '<%= paths.app %>/styles/main.scss',
             dest: '<%= paths.server %>/styles/main.css'
         }
+    },
+    autoprefixer: {
+        serve: {
+            src: '<%= paths.server %>/styles/main.css',
+            dest: '<%= paths.server %>/styles/main.css'
+        },
     }
 };

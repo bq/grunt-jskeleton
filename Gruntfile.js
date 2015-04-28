@@ -10,14 +10,15 @@ module.exports = require('gruntfile')(function(grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
+    // Project settings
     var options = {
-        // Project settings
+        // Configurable paths
         paths: {
-            // Configurable paths
             app: 'src',
             dist: 'dist',
             server: '.tmp'
         },
+        // Configurable ports
         ports: {
             app: '9000',
             test: '9001',
@@ -37,11 +38,10 @@ module.exports = require('gruntfile')(function(grunt) {
         // }
         'clean:server',
         'concurrent:server',
-        'watchify:server',
+        'autoprefixer:serve',
         'browserSync:server',
         'watch'
     ]);
-
 
     // grunt.registerTask('server', function() {
     //     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
