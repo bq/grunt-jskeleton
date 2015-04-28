@@ -20,7 +20,11 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-libsass": "^0.2.0",
     "grunt-watchify": "^0.1.0",
-    "gruntfile": "^0.1.0",
     "jit-grunt": "^0.9.1"
+  },
+  "devDependencies": {
+    "grunt-concurrent": "^1.0.0",
+    "load-grunt-configs": "^0.4.3",
+    "time-grunt": "^1.1.1"
   }
 }
