@@ -1,0 +1,38 @@
+{
+    "name": "grunt-jskeleton",
+    "version": "0.0.1",
+    "description": "",
+    "main": "lib/main.js",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:bq/grunt-jskeleton.git"
+    },
+    "ignore": [
+        "bower_components",
+        "node_modules",
+        ".tmp",
+        "*.log",
+        ".DS_Store",
+        ".idea",
+        ".gitignore",
+        ".travis.yml",
+        ".editorconfig"
+    ],
+    "dependencies": {
+        "penguin": "master"
+    },
+    "authors": [
+        "front-end bq <front-end@bq.com>"
+    ],
+    "keywords": [
+        "penguin",
+        "backbone",
+        "marionette",
+        "jquery",
+        "javascript",
+        "jskeleton",
+        "css",
+        "html5",
+        "sass"
+    ]
+}
