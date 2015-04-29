@@ -1,14 +1,19 @@
 'use strict';
+
 /* global module, require*/
 
 module.exports = require('gruntfile')(function(grunt) {
 
+    // Static mapping
     require('jit-grunt')(grunt)({
         pluginsRoot: 'node_modules/grunt-jskeleton/node_modules'
     });
 
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
+
+    // Automatic desktop notifications
+    grunt.loadNpmTasks('grunt-notify');
 
     // Project settings
     var options = {
@@ -23,6 +28,11 @@ module.exports = require('gruntfile')(function(grunt) {
             app: '9000',
             test: '9001',
             livereload: '35729'
+        },
+
+        // Configurable jshint
+        jshint: {
+            reporter: require('jshint-stylish')
         }
     };
 
@@ -38,9 +48,10 @@ module.exports = require('gruntfile')(function(grunt) {
         // }
         'clean:server',
         'concurrent:server',
-        'autoprefixer:serve',
+        'autoprefixer:server',
         'browserSync:server',
-        'watch'
+        'watch',
+        'notify_hooks'
     ]);
 
     // grunt.registerTask('server', function() {

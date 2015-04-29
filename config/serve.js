@@ -8,6 +8,20 @@ module.exports.tasks = {
             src: ['<%= paths.server %>']
         }
     },
+    plato: {
+        server: {
+            files: {
+                '<%= paths.server %>/report': ['<%= paths.app %>/applications/{,**/}*.js']
+            }
+        }
+    },
+    notify_hooks: {
+        options: {
+            enabled: true,
+            max_jshint_notifications: 5, // maximum number of notifications from jshint output
+            duration: 3 // the duration of notification in seconds, for `notify-send only
+        }
+    },
     watchify: {
         server: {
             options: {
@@ -27,8 +41,9 @@ module.exports.tasks = {
             bsFiles: {
                 src: [
                     '<%= paths.server %>/styles/main.css',
+                    '<%= paths.server %>/assets/**/*',
                     '<%= paths.server %>/scripts/index.js',
-                    '<%= paths.server %>/index.html',
+                    '<%= paths.server %>/*.html',
                     'Gruntfile.js'
                 ]
             }
@@ -38,9 +53,12 @@ module.exports.tasks = {
         options: {
             port: '<%= ports.livereload %>',
         },
+        gruntfile: {
+            files: ['Gruntfile.js']
+        },
         js: {
-            files: ['<%= paths.app %>/applications/{,**/}*.js'],
-            tasks: 'watchify:server',
+            files: ['<%= paths.app %>/{,**/}*.js'],
+            tasks: ['newer:jshint', 'newer:jscs', 'watchify:server'],
             options: {
                 spawn: false
             }
@@ -52,20 +70,24 @@ module.exports.tasks = {
                 spawn: false
             }
         },
-        index: {
-            files: ['<%= paths.app %>/index.html'],
-            tasks: 'copy:server'
+        assets: {
+            files: ['<%= paths.app %>/assets/**/*'],
+            tasks: 'newer:copy:server'
+        },
+        html: {
+            files: ['<%= paths.app %>/*.html'],
+            tasks: 'newer:copy:server'
         }
     },
     concurrent: {
-        server: ['libsass:server', 'copy:server', 'watchify:server', ]
+        server: ['libsass:server', 'copy:server', 'jshint', 'jscs', 'watchify:server']
     },
     copy: {
         server: {
             files: [{
                 expand: true,
                 cwd: '<%= paths.app %>',
-                src: 'index.html',
+                src: '*.html',
                 dest: '<%= paths.server %>'
             }, {
                 expand: true,
@@ -88,6 +110,6 @@ module.exports.tasks = {
         server: {
             src: '<%= paths.server %>/styles/main.css',
             dest: '<%= paths.server %>/styles/main.css'
-        },
+        }
     }
 };
