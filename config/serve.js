@@ -76,16 +76,16 @@ module.exports.tasks = {
         }
     },
     libsass: {
-        options: {
-            debugInfo: true
-        },
         server: {
+            options: {
+                debugInfo: true
+            },
             src: '<%= paths.app %>/styles/main.scss',
             dest: '<%= paths.server %>/styles/main.css'
         }
     },
     autoprefixer: {
-        serve: {
+        server: {
             src: '<%= paths.server %>/styles/main.css',
             dest: '<%= paths.server %>/styles/main.css'
         },
