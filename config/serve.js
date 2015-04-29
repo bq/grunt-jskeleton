@@ -25,9 +25,14 @@ module.exports.tasks = {
     watchify: {
         server: {
             options: {
-                debug: true
+                debug: true,
+                callback: function(b) {
+                    var debowerify = require('debowerify');
+                    b.transform(debowerify);
+                    return b;
+                }
             },
-            src: './<%= paths.app %>/applications/{,**/}*.js',
+            src: './<%= paths.app %>/applications/index.js',
             dest: './<%= paths.server %>/scripts/index.js'
         }
     },
