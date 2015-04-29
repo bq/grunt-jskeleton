@@ -17,6 +17,7 @@ module.exports = require('gruntfile')(function(grunt) {
 
     // Project settings
     var options = {
+
         // Configurable paths
         paths: {
             app: 'src',
@@ -28,11 +29,6 @@ module.exports = require('gruntfile')(function(grunt) {
             app: '9000',
             test: '9001',
             livereload: '35729'
-        },
-
-        // Configurable jshint
-        jshint: {
-            reporter: require('jshint-stylish')
         }
     };
 

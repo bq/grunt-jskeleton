@@ -1,12 +1,22 @@
 'use strict';
 
-/* global module */
+/* global require, module */
+var jshintStylish = require('jshint-stylish'),
+    debowerify = require('debowerify');
 
 module.exports.tasks = {
+    watchify: {
+        options: {
+            callback: function(b) {
+                b.transform(debowerify);
+                return b;
+            }
+        }
+    },
     jshint: {
         options: {
             jshintrc: '.jshintrc',
-            reporter: '<%= jshint.reporter %>'
+            reporter: jshintStylish
         },
         all: ['Gruntfile.js', '<%= paths.app %>/{,**/}*.js']
     },
