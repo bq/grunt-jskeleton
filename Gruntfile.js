@@ -1,6 +1,6 @@
 'use strict';
 
-/* global module, require*/
+/* global module, require */
 
 module.exports = require('gruntfile')(function(grunt) {
 
@@ -14,6 +14,7 @@ module.exports = require('gruntfile')(function(grunt) {
 
     // Automatic desktop notifications
     grunt.loadNpmTasks('grunt-notify');
+    grunt.loadNpmTasks('grunt-usemin');
 
     // Project settings
     var options = {
@@ -22,7 +23,8 @@ module.exports = require('gruntfile')(function(grunt) {
         paths: {
             app: 'src',
             dist: 'dist',
-            server: '.tmp'
+            server: '.tmp',
+            doc: 'doc'
         },
         // Configurable ports
         ports: {
@@ -38,16 +40,62 @@ module.exports = require('gruntfile')(function(grunt) {
     // Define the configuration for all the tasks
     grunt.initConfig(configs);
 
-    grunt.registerTask('serve', 'Runs server for development', [
-        // if (target === 'dist') {
-        //     return grunt.task.run(['build', 'connect:dist:keepalive']);
-        // }
+    grunt.registerTask('serve', 'Runs server for development', function(target) {
+        if (target === 'dist') {
+            return grunt.task.run(['build', 'browserSync:dist']);
+        }
+        grunt.task.run([
+            'clean:server',
+            '_compile:server',
+            'browserSync:server',
+            'notify_hooks',
+            'watch'
+        ]);
+    });
+
+    grunt.registerTask('build', 'Generates the package for distribution', [
+        'clean:dist',
+        '_compile:dist',
+        'filerev:dist',
+        'usemin'
+    ]);
+
+    grunt.registerTask('serve:benchmark', 'Generates documentation and reports', [
         'clean:server',
-        'concurrent:server',
-        'autoprefixer:server',
+        'plato:server',
         'browserSync:server',
-        'watch',
-        'notify_hooks'
+        'watch'
+    ]);
+
+    // Internal tasks
+    grunt.registerTask('_review:js', 'Internal use only', [
+        'jshint',
+        'jscs',
+        'csslint'
+    ]);
+    grunt.registerTask('_minify', 'Internal use only', [
+        'uglify',
+        'htmlmin',
+        'cssmin',
+        'imagemin',
+        'svgmin'
+    ]);
+
+    grunt.registerTask('_compile:dist', 'Internal use only', [
+        'libsass:dist',
+        'autoprefixer:dist',
+        '_review:js',
+        'copy:dist',
+        'watchify:dist',
+        '_minify'
+    ]);
+
+    grunt.registerTask('_compile:server', 'Internal use only', [
+        'libsass:server',
+        'autoprefixer:server',
+        '_review:js',
+        'copy:server',
+        'watchify:server'
     ]);
 
     // grunt.registerTask('server', function() {

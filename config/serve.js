@@ -11,7 +11,7 @@ module.exports.tasks = {
     plato: {
         server: {
             files: {
-                '<%= paths.server %>/report': ['<%= paths.app %>/applications/{,**/}*.js']
+                '<%= paths.server %>': ['<%= paths.app %>/applications/{,**/}*.js']
             }
         }
     },
@@ -78,9 +78,6 @@ module.exports.tasks = {
             files: ['<%= paths.app %>/*.html'],
             tasks: 'newer:copy:server'
         }
-    },
-    concurrent: {
-        server: ['libsass:server', 'copy:server', 'jshint', 'jscs', 'watchify:server']
     },
     copy: {
         server: {

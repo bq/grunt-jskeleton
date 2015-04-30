@@ -37,4 +37,13 @@ Also, you can have this indirect Gruntfile, using the [generator-jskeleton](http
 #### grunt serve
 Runs server for development.
 
+#### grunt serve:dist
+Runs server for production
+
+#### grunt serve:benchmark
+Runs server for benchmark
+
+#### grunt build
+Generates the files for distribution
+
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
