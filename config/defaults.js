@@ -2,24 +2,25 @@
 
 /* global require, module */
 var jshintStylish = require('jshint-stylish'),
-    debowerify = require('debowerify');
+    debowerify = require('debowerify'),
+    htmlbarsify = require('htmlbarsify');
 
 module.exports.tasks = {
     watchify: {
         options: {
             callback: function(b) {
-                b.transform(debowerify);
+                b.transform(debowerify).transform(htmlbarsify);
                 return b;
             }
         }
     },
-    jshint: {
-        options: {
-            jshintrc: '.jshintrc',
-            reporter: jshintStylish
-        },
-        all: ['Gruntfile.js', '<%= paths.app %>/{,**/}*.js']
-    },
+    // jshint: {
+    //     options: {
+    //         jshintrc: '.jshintrc',
+    //         reporter: jshintStylish
+    //     },
+    //     all: ['Gruntfile.js', '<%= paths.app %>/{,**/}*.js']
+    // },
     jscs: {
         options: {
             config: '.jscsrc',
