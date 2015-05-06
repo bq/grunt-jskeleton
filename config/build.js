@@ -37,6 +37,17 @@ module.exports.tasks = {
             }]
         }
     },
+    critical: {
+        dist: {
+            options: {
+                base: '<%= paths.app %>',
+                css: '<%= paths.app %>/assets/css/main.css',
+                minify: true
+            },
+            src: '<%= paths.dist %>/{,*/}*.html',
+            dest: '<%= paths.dist %>/{,*/}*.html'
+        }
+    },
     libsass: {
         dist: {
             src: '<%= paths.app %>/styles/main.scss',
@@ -128,5 +139,5 @@ module.exports.tasks = {
                 dest: '<%= paths.dist %>/assets/svg'
             }]
         }
-    },
+    }
 };

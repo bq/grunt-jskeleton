@@ -57,7 +57,8 @@ module.exports = require('gruntfile')(function(grunt) {
         'clean:dist',
         '_compile:dist',
         'filerev:dist',
-        'usemin'
+        'usemin',
+        'critical:dist'
     ]);
 
     grunt.registerTask('serve:benchmark', 'Generates documentation and reports', [
@@ -87,7 +88,8 @@ module.exports = require('gruntfile')(function(grunt) {
         '_review:js',
         'copy:dist',
         'watchify:dist',
-        '_minify'
+        '_minify',
+        'critical:dist'
     ]);
 
     grunt.registerTask('_compile:server', 'Internal use only', [
