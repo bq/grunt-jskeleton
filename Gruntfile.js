@@ -15,6 +15,7 @@ module.exports = require('gruntfile')(function(grunt) {
     // Automatic desktop notifications
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-mocha-test');
 
     // Project settings
     var options = {
@@ -119,6 +120,17 @@ module.exports = require('gruntfile')(function(grunt) {
     //         'mocha'
     //     ]);
     // });
+
+    grunt.registerTask('test', function(type) {
+
+        if (type === 'selenium') {
+            // return grunt.task.run('nightwatch');
+            console.log('selenium tests');
+            return;
+        }
+
+        grunt.task.run('mochaTest');
+    });
 
     // grunt.registerTask('build', [
     //     'clean:dist',
