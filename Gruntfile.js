@@ -31,7 +31,8 @@ module.exports = require('gruntfile')(function(grunt) {
         ports: {
             app: '9000',
             test: '9001',
-            livereload: '35729'
+            livereload: '35729',
+            selenium: '4444'
         }
     };
 
@@ -124,9 +125,14 @@ module.exports = require('gruntfile')(function(grunt) {
     grunt.registerTask('test', function(type) {
 
         if (type === 'selenium') {
-            // return grunt.task.run('nightwatch');
-            console.log('selenium tests');
-            return;
+
+            var browser = grunt.option('browser');
+
+            if (browser) {
+                grunt.config.set('nightwatch.options.desiredCapabilities.browserName', browser);
+            }
+
+            return grunt.task.run('nightwatch');
         }
 
         grunt.task.run('mochaTest');

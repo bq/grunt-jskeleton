@@ -12,7 +12,21 @@ module.exports.tasks = {
                 quiet: false,
                 clearRequireCache: false
             },
-            src: ['test/suite.js']
+            src: 'test/unit/suite.js'
+        }
+    },
+
+    nightwatch: {
+        options: {
+            config_path: './test/selenium/config.json',
+            selenium: {
+                port: '<%= ports.selenium %>'
+            },
+            test_settings: {
+                default: {
+                    selenium_port: '<%= ports.selenium %>'
+                }
+            }
         }
     }
 
