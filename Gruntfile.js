@@ -125,14 +125,8 @@ module.exports = require('gruntfile')(function(grunt) {
     grunt.registerTask('test', function(type) {
 
         if (type === 'selenium') {
-
-            var browser = grunt.option('browser');
-
-            if (browser) {
-                grunt.config.set('nightwatch.options.desiredCapabilities.browserName', browser);
-            }
-
-            return grunt.task.run('nightwatch');
+            var browser = grunt.option('browser') || 'phantomjs'
+            return grunt.task.run('nightwatch:' + browser);
         }
 
         grunt.task.run('mochaTest');
