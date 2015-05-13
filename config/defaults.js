@@ -14,13 +14,13 @@ module.exports.tasks = {
             }
         }
     },
-    // jshint: {
-    //     options: {
-    //         jshintrc: '.jshintrc',
-    //         reporter: jshintStylish
-    //     },
-    //     all: ['Gruntfile.js', '<%= paths.app %>/{,**/}*.js']
-    // },
+    jshint: {
+        options: {
+            jshintrc: '.jshintrc',
+            reporter: jshintStylish
+        },
+        all: ['Gruntfile.js', '<%= paths.app %>/{,**/}*.js']
+    },
     jscs: {
         options: {
             config: '.jscsrc',

@@ -12,8 +12,7 @@ module.exports = require('gruntfile')(function(grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
-    // Automatic desktop notifications
-    grunt.loadNpmTasks('grunt-notify');
+    // Non compatible tasks with jit-grunt
     grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-mocha-test');
 
@@ -50,7 +49,6 @@ module.exports = require('gruntfile')(function(grunt) {
             'clean:server',
             '_compile:server',
             'browserSync:server',
-            'notify_hooks',
             'watch'
         ]);
     });
@@ -97,7 +95,7 @@ module.exports = require('gruntfile')(function(grunt) {
     grunt.registerTask('_compile:server', 'Internal use only', [
         'libsass:server',
         'autoprefixer:server',
-        '_review:js',
+        // '_review:js',
         'copy:server',
         'watchify:server'
     ]);
@@ -125,7 +123,7 @@ module.exports = require('gruntfile')(function(grunt) {
     grunt.registerTask('test', function(type) {
 
         if (type === 'selenium') {
-            var browser = grunt.option('browser') || 'phantomjs'
+            var browser = grunt.option('browser') || 'phantomjs';
             return grunt.task.run('nightwatch:' + browser);
         }
 

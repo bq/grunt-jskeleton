@@ -15,13 +15,6 @@ module.exports.tasks = {
             }
         }
     },
-    notify_hooks: {
-        options: {
-            enabled: true,
-            max_jshint_notifications: 5, // maximum number of notifications from jshint output
-            duration: 3 // the duration of notification in seconds, for `notify-send only
-        }
-    },
     watchify: {
         server: {
             options: {
@@ -42,7 +35,7 @@ module.exports.tasks = {
                 src: [
                     '<%= paths.server %>/styles/main.css',
                     '<%= paths.server %>/assets/**/*',
-                    '<%= paths.server %>/scripts/index.js',
+                    '<%= paths.server %>/scripts/*.js',
                     '<%= paths.server %>/*.html',
                     'Gruntfile.js'
                 ]
@@ -58,7 +51,7 @@ module.exports.tasks = {
         },
         js: {
             files: ['<%= paths.app %>/{,**/}*.js'],
-            tasks: ['newer:jshint', 'newer:jscs', 'watchify:server'],
+            tasks: ['newer:jshint', 'newer:jscs'],
             options: {
                 spawn: false
             }
@@ -76,7 +69,7 @@ module.exports.tasks = {
         },
         html: {
             files: ['<%= paths.app %>/*.html'],
-            tasks: 'newer:copy:server'
+            tasks: ['newer:copy:server']
         }
     },
     copy: {
