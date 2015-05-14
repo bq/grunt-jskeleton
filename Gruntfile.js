@@ -56,6 +56,12 @@ module.exports = require('gruntfile')(function(grunt) {
         'critical:dist'
     ]);
 
+
+    grunt.registerTask('dist', 'Create distribution', [
+        'test',
+        '_package'
+    ]);
+
     grunt.registerTask('serve:benchmark', 'Generates documentation and reports', [
         'clean:server',
         'plato:server',
