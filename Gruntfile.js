@@ -90,7 +90,7 @@ module.exports = require('gruntfile')(function(grunt) {
     grunt.registerTask('_compile:server', 'Internal use only', [
         'libsass:server',
         'autoprefixer:server',
-        // '_review:js',
+        '_review:js',
         'copy:server',
         'watchify:server'
     ]);
