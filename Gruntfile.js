@@ -27,12 +27,7 @@ module.exports = require('gruntfile')(function(grunt) {
             doc: 'doc'
         },
         // Configurable ports
-        ports: {
-            app: '9000',
-            test: '9001',
-            livereload: '35729',
-            selenium: '4444'
-        }
+        ports: require('./utils/ports')(grunt)
     };
 
     // Load grunt configurations automatically
