@@ -10,7 +10,8 @@ module.exports.tasks = {
             indentation: '\t', //default: '  ' (two spaces)
             commitMessage: 'Release v<%= version %>', //default: 'release <%= version %>'
             tagMessage: 'v<%= version %>', //default: 'Version <%= version %>',
-            tagName: 'v<%= version %>'
+            tagName: 'v<%= version %>',
+            npm: false // no publish
         }
     }
 };

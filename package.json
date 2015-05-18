@@ -3,8 +3,9 @@
     "version": "0.0.4",
     "description": "JSkeleton application Gruntfile",
     "main": "Gruntfile.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:bq/grunt-jskeleton.git"
     },
     "keywords": [
         "jskeleton",
@@ -20,6 +21,12 @@
     ],
     "license": "MIT",
     "dependencies": {
+        "gruntfile": "^0.1.0",
+        "jit-grunt": "^0.9.1",
+        "load-grunt-configs": "^0.4.3",
+        "time-grunt": "^1.1.1"
+    },
+    "devDependencies": {
         "debowerify": "^1.2.1",
         "grunt-autoprefixer": "^3.0.0",
         "grunt-browser-sync": "^2.1.2",
@@ -42,11 +49,7 @@
         "grunt-svgmin": "^2.0.1",
         "grunt-usemin": "^3.0.0",
         "grunt-watchify": "^0.1.0",
-        "gruntfile": "^0.1.0",
         "htmlbarsify": "^0.0.1",
-        "jit-grunt": "^0.9.1",
-        "jshint-stylish": "^1.0.1",
-        "load-grunt-configs": "^0.4.3",
-        "time-grunt": "^1.1.1"
+        "jshint-stylish": "^1.0.1"
     }
 }
