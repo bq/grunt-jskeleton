@@ -21,8 +21,13 @@ module.exports.tasks = {
             config_path: './test/selenium/config.json',
             selenium: {
                 port: '<%= ports.selenium %>'
+            },
+            test_settings: {
+                default: {
+                    selenium_port: '<%= ports.selenium %>',
+                }
             }
         }
-    }
 
-};
+    }
+}

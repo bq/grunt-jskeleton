@@ -16,7 +16,7 @@ module.exports = function(grunt) {
     var LIVERELOAD_PORT = grunt.option('random-ports') ? randomPort() : 35729;
     var SERVER_PORT = grunt.option('random-ports') ? randomPort() : 9000;
     var SERVER_TEST_PORT = grunt.option('random-ports') ? randomPort() : 9001;
-    var SELENIUM_PORT = grunt.option('random-ports') ? randomPort() : 444;
+    var SELENIUM_PORT = grunt.option('random-ports') ? randomPort() : 4444;
 
     return {
         app: SERVER_PORT,

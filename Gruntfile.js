@@ -18,7 +18,8 @@ module.exports = require('gruntfile')(function(grunt) {
 
     // Project settings
     var options = {
-
+        // Package.json
+        pkg: grunt.file.readJSON('package.json'),
         // Configurable paths
         paths: {
             app: 'src',
@@ -55,7 +56,6 @@ module.exports = require('gruntfile')(function(grunt) {
         'usemin'
     ]);
 
-
     grunt.registerTask('dist', 'Create distribution', [
         'test',
         '_package'
@@ -67,6 +67,30 @@ module.exports = require('gruntfile')(function(grunt) {
         'browserSync:server',
         'watch'
     ]);
+
+    grunt.registerTask('test', function(type) {
+
+        if (type === 'selenium') {
+            var browser = grunt.option('browser') || 'phantomjs';
+            return grunt.task.run('nightwatch:' + browser);
+        }
+
+        grunt.task.run('mochaTest');
+    });
+
+    grunt.registerTask('deploy', function(env) {
+
+        var environment = env || 'integration';
+        var configFile = grunt.option('config') || 'src/resources/config.json';
+        var configData = grunt.file.readJSON(configFile).deploy[environment];
+
+        grunt.task.requires(['dist']);
+
+        var options = {};
+
+        grunt.config.merge('aws_s3', options);
+
+    });
 
     // Internal tasks
     grunt.registerTask('_review:js', 'Internal use only', [
@@ -98,56 +122,5 @@ module.exports = require('gruntfile')(function(grunt) {
         'copy:server',
         'watchify:server'
     ]);
-
-    // grunt.registerTask('server', function() {
-    //     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    //     grunt.task.run(['serve']);
-    // });
-
-    // grunt.registerTask('test', function(target) {
-    //     if (target !== 'watch') {
-    //         grunt.task.run([
-    //             'clean:server',
-    //             'concurrent:test',
-    //             'autoprefixer',
-    //         ]);
-    //     }
-
-    //     grunt.task.run([
-    //         'connect:test',
-    //         'mocha'
-    //     ]);
-    // });
-
-    grunt.registerTask('test', function(type) {
-
-        if (type === 'selenium') {
-            var browser = grunt.option('browser') || 'phantomjs';
-            return grunt.task.run('nightwatch:' + browser);
-        }
-
-        grunt.task.run('mochaTest');
-    });
-
-    // grunt.registerTask('build', [
-    //     'clean:dist',
-    //     'useminPrepare',
-    //     'concurrent:dist',
-    //     'autoprefixer',
-    //     'concat',
-    //     'cssmin',
-    //     'uglify',
-    //     'copy:dist',
-    //     'modernizr',
-    //     'rev',
-    //     'usemin',
-    //     'htmlmin'
-    // ]);
-
-    // grunt.registerTask('default', [
-    //     'newer:jshint',
-    //     'test',
-    //     'build'
-    // ]);
 
 });
