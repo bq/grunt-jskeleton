@@ -1,6 +1,6 @@
 {
     "name": "grunt-jskeleton",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "JSkeleton application Gruntfile",
     "main": "Gruntfile.js",
     "scripts": {
