@@ -2,6 +2,8 @@
 
 /* global module, require */
 
+var extend = require("xtend");
+
 module.exports = require('gruntfile')(function(grunt) {
 
     // Static mapping
@@ -86,9 +88,11 @@ module.exports = require('gruntfile')(function(grunt) {
 
         grunt.task.requires(['dist']);
 
-        var options = {};
+        var config = extend({}, configData, grunt.config.get('aws_s3'));
 
-        grunt.config.merge('aws_s3', options);
+        grunt.config.set('aws_s3', config);
+
+        grunt.task.run('aws_s3');
 
     });
 

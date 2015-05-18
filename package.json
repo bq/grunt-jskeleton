@@ -51,6 +51,7 @@
         "grunt-usemin": "^3.0.0",
         "grunt-watchify": "^0.1.0",
         "htmlbarsify": "^0.0.1",
-        "jshint-stylish": "^1.0.1"
+        "jshint-stylish": "^1.0.1",
+        "xtend": "^4.0.0"
     }
 }
