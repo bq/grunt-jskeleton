@@ -10,7 +10,7 @@ module.exports.tasks = {
     },
     watchify: {
         dist: {
-            src: './<%= paths.app %>/{,**/}*.js',
+            src: './<%= paths.app %>/applications/index.js',
             dest: './<%= paths.dist %>/scripts/index.js'
         }
     },
@@ -35,17 +35,6 @@ module.exports.tasks = {
                 src: '**/*',
                 dest: '<%= paths.dist %>/assets'
             }]
-        }
-    },
-    critical: {
-        dist: {
-            options: {
-                base: '<%= paths.app %>',
-                css: '<%= paths.app %>/assets/css/main.css',
-                minify: true
-            },
-            src: '<%= paths.dist %>/{,*/}*.html',
-            dest: '<%= paths.dist %>/{,*/}*.html'
         }
     },
     libsass: {

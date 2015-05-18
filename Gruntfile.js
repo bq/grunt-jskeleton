@@ -52,8 +52,7 @@ module.exports = require('gruntfile')(function(grunt) {
         'clean:dist',
         '_compile:dist',
         'filerev:dist',
-        'usemin',
-        'critical:dist'
+        'usemin'
     ]);
 
 
@@ -89,8 +88,7 @@ module.exports = require('gruntfile')(function(grunt) {
         '_review:js',
         'copy:dist',
         'watchify:dist',
-        '_minify',
-        'critical:dist'
+        '_minify'
     ]);
 
     grunt.registerTask('_compile:server', 'Internal use only', [

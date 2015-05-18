@@ -32,7 +32,6 @@
         "grunt-contrib-jshint": "^0.11.2",
         "grunt-contrib-uglify": "^0.9.1",
         "grunt-contrib-watch": "^0.6.1",
-        "grunt-critical": "^0.1.4",
         "grunt-filerev": "^2.3.1",
         "grunt-jscs": "^1.8.0",
         "grunt-libsass": "^0.2.0",
@@ -47,10 +46,7 @@
         "htmlbarsify": "^0.0.1",
         "jit-grunt": "^0.9.1",
         "jshint-stylish": "^1.0.1",
-        "load-grunt-config": "^0.17.1",
+        "load-grunt-configs": "^0.4.3",
         "time-grunt": "^1.1.1"
-    },
-    "devDependencies": {
-        "grunt": "^0.4.5"
     }
 }
