@@ -85,12 +85,24 @@ module.exports = require('gruntfile')(function(grunt) {
         var environment = env || 'integration';
         var configFile = grunt.option('config') || 'src/resources/config.json';
         var configData = grunt.file.readJSON(configFile).deploy[environment];
+        var mainScript = grunt.file.expand('dist/scripts/index.*.js')[0];
+        var config = extend({}, configData, grunt.config.get('aws_s3.deploy'));
 
-        grunt.task.requires(['dist']);
+        grunt.task.requires(['build']);
 
-        var config = extend({}, configData, grunt.config.get('aws_s3'));
+        // Concat env configuration
+        grunt.config.set('concat.config', {
+            options: {
+                footer: 'var CFG = ' + JSON.stringify(configData) + ';'
+            },
+            src: [mainScript],
+            dest: mainScript
+        });
 
-        grunt.config.set('aws_s3', config);
+        grunt.task.run('concat:config');
+
+        // Run deploy task
+        grunt.config.set('aws_s3.deploy', config);
 
         grunt.task.run('aws_s3');
 
