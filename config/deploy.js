@@ -1,5 +1,11 @@
 module.exports.tasks = {
     aws_s3: {
+        options: {
+            region: 'eu-west-1',
+            uploadConcurrency: 5,
+            gzip: true,
+            excludedFromGzip: ['*.png', '*.jpg', '*.jpeg', '*.ico', '*.mp4', '*.avi', '*.mp3', '*.ogg', '*.ogm', '*.webm', '*.webp']
+        },
         deploy: {
             files: [{
                 action: 'upload',
