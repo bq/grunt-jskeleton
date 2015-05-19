@@ -88,7 +88,7 @@ module.exports = require('gruntfile')(function(grunt) {
         var mainScript = grunt.file.expand('dist/scripts/index.*.js')[0];
         var config = extend({}, configData, grunt.config.get('aws_s3.deploy'));
 
-        // grunt.task.requires(['build']);
+        grunt.task.requires(['build']);
 
         // Concat env configuration
         grunt.config.set('concat.config', {
