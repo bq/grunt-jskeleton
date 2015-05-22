@@ -26,7 +26,7 @@ module.exports.tasks = {
             config: '.jscsrc',
             verbose: true // If you need output with rule names http://jscs.info/overview.html#verbose
         },
-        src: '<%= paths.app %>/{,**/}*.js',
+        src: '<%= paths.app %>/{,**/}*.js'
     },
     csslint: {
         options: {
@@ -37,11 +37,11 @@ module.exports.tasks = {
     autoprefixer: {
         options: {
             browsers: ['last 2 version', 'ie 9']
-        },
+        }
     },
-    libsass: {
+    sass: {
         options: {
-            loadPath: ['bower_components']
+            includePaths: ['bower_components']
         }
     }
 };

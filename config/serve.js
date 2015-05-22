@@ -87,11 +87,8 @@ module.exports.tasks = {
             }]
         }
     },
-    libsass: {
+    sass: {
         server: {
-            options: {
-                debugInfo: true
-            },
             src: '<%= paths.app %>/styles/main.scss',
             dest: '<%= paths.server %>/styles/main.css'
         }

@@ -37,7 +37,7 @@ module.exports.tasks = {
             }]
         }
     },
-    libsass: {
+    sass: {
         dist: {
             src: '<%= paths.app %>/styles/main.scss',
             dest: '<%= paths.dist %>/styles/main.css'

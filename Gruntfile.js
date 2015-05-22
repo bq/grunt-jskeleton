@@ -123,7 +123,7 @@ module.exports = require('gruntfile')(function(grunt) {
     ]);
 
     grunt.registerTask('_compile:dist', 'Internal use only', [
-        'libsass:dist',
+        'sass:dist',
         'autoprefixer:dist',
         '_review:js',
         'copy:dist',
@@ -132,7 +132,7 @@ module.exports = require('gruntfile')(function(grunt) {
     ]);
 
     grunt.registerTask('_compile:server', 'Internal use only', [
-        'libsass:server',
+        'sass:server',
         'autoprefixer:server',
         '_review:js',
         'copy:server',
