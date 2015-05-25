@@ -58,7 +58,7 @@ module.exports.tasks = {
         },
         styles: {
             files: ['<%= paths.app %>/styles/{,*/}*.scss'],
-            tasks: 'libsass:server',
+            tasks: 'sass:server',
             options: {
                 spawn: false
             }
