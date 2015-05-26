@@ -1,16 +1,16 @@
 'use strict';
 
 /* global require, module */
-var jshintStylish = require('jshint-stylish'),
-    debowerify = require('debowerify'),
-    htmlbarsify = require('htmlbarsify');
+var jshintStylish = require('jshint-stylish');
+var debowerify = require('debowerify');
+var htmlbarsify = require('htmlbarsify');
+var envReplace = require('../utils/replace');
 
 module.exports.tasks = {
     watchify: {
         options: {
             callback: function(b) {
-                b.transform(debowerify).transform(htmlbarsify);
-                return b;
+                return b.transform(debowerify).transform(htmlbarsify).transform(envReplace);
             }
         }
     },

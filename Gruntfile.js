@@ -83,29 +83,22 @@ module.exports = require('gruntfile')(function(grunt) {
     grunt.registerTask('deploy', function(env) {
 
         var environment = env || 'integration';
-        var configFile = grunt.option('config') || 'src/resources/config.json';
-        var configData = grunt.file.readJSON(configFile).deploy[environment];
-        var mainScript = grunt.file.expand('dist/scripts/index.*.js')[0];
-        var config = extend({}, configData, grunt.config.get('aws_s3.deploy'));
 
-        grunt.task.requires(['build']);
+        var configFile = grunt.option('config') || 'src/resources/config/' + environment + '/config.json';
+        var configData = grunt.file.readJSON(configFile);
 
-        // Concat env configuration
-        grunt.config.set('concat.config', {
-            options: {
-                footer: 'var CFG = ' + JSON.stringify(configData) + ';'
-            },
-            src: [mainScript],
-            dest: mainScript
-        });
+        var bucketConfig = {
+            options: configData.deploy
+        };
 
-        grunt.task.run('concat:config');
+        // Check if build task has been runned
+        grunt.task.requires('build');
+
+        // Config deploy task
+        grunt.config.set('aws_s3.deploy', bucketConfig);
 
         // Run deploy task
-        grunt.config.set('aws_s3.deploy', config);
-
         grunt.task.run('aws_s3');
-
     });
 
     // Internal tasks
