@@ -53,6 +53,12 @@ module.exports.tasks = {
             }]
         }
     },
+    svgstore: {
+        dist: {
+            src: '<%= paths.dist %>/assets/svg/*.svg',
+            dest: '<%= paths.dist %>/assets/svg/defs.svg'
+        }
+    },
     filerev: {
         dist: {
             src: [

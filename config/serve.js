@@ -101,5 +101,14 @@ module.exports.tasks = {
             src: '<%= paths.server %>/styles/main.css',
             dest: '<%= paths.server %>/styles/main.css'
         }
+    },
+    svgstore: {
+        server: {
+            options: {
+                includedemo: true
+            },
+            src: '<%= paths.server %>/assets/svg/*.svg',
+            dest: '<%= paths.server %>/assets/svg/defs.svg'
+        }
     }
 };

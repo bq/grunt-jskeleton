@@ -58,11 +58,6 @@ module.exports = require('gruntfile')(function(grunt) {
         'usemin'
     ]);
 
-    grunt.registerTask('dist', 'Create distribution', [
-        'test',
-        '_package'
-    ]);
-
     grunt.registerTask('serve:benchmark', 'Generates documentation and reports', [
         'clean:server',
         'plato:server',
@@ -120,6 +115,7 @@ module.exports = require('gruntfile')(function(grunt) {
         'autoprefixer:dist',
         '_review:js',
         'copy:dist',
+        'svgstore:dist',
         'watchify:dist',
         '_minify'
     ]);
@@ -129,6 +125,7 @@ module.exports = require('gruntfile')(function(grunt) {
         'autoprefixer:server',
         '_review:js',
         'copy:server',
+        'svgstore:server',
         'watchify:server'
     ]);
 
