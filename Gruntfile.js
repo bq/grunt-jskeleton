@@ -82,15 +82,10 @@ module.exports = require('gruntfile')(function(grunt) {
         var configFile = grunt.option('config') || 'src/resources/config/' + environment + '/config.json';
         var configData = grunt.file.readJSON(configFile);
 
-        var bucketConfig = {
-            options: configData.deploy
-        };
+        grunt.config.set('aws_s3.deploy.options', configData.deploy);
 
         // Check if build task has been runned
         grunt.task.requires('build');
-
-        // Config deploy task
-        grunt.config.set('aws_s3.deploy', bucketConfig);
 
         // Run deploy task
         grunt.task.run('aws_s3');
