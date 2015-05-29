@@ -2,8 +2,6 @@
 
 /* global module, require */
 
-var extend = require("xtend");
-
 module.exports = require('gruntfile')(function(grunt) {
 
     // Static mapping
@@ -95,12 +93,12 @@ module.exports = require('gruntfile')(function(grunt) {
     });
 
     // Internal tasks
-    grunt.registerTask('_review:js', 'Internal use only', [
+    grunt.registerTask('_review:js', 'Valids the code (internal use only)', [
         'jshint',
-        'jscs',
         'csslint'
     ]);
-    grunt.registerTask('_minify', 'Internal use only', [
+
+    grunt.registerTask('_minify', 'Minifiy the code and assets (internal use only)', [
         'uglify',
         'htmlmin',
         'cssmin',
@@ -108,7 +106,7 @@ module.exports = require('gruntfile')(function(grunt) {
         'svgmin'
     ]);
 
-    grunt.registerTask('_compile:dist', 'Internal use only', [
+    grunt.registerTask('_compile:dist', 'Build compile process (internal use only)', [
         'sass:dist',
         'autoprefixer:dist',
         '_review:js',
@@ -118,7 +116,7 @@ module.exports = require('gruntfile')(function(grunt) {
         '_minify'
     ]);
 
-    grunt.registerTask('_compile:server', 'Internal use only', [
+    grunt.registerTask('_compile:server', 'Server compile process (internal use only)', [
         'sass:server',
         'autoprefixer:server',
         '_review:js',

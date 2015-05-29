@@ -34,6 +34,11 @@ module.exports.tasks = {
                 cwd: '<%= paths.app %>/assets',
                 src: '**/*',
                 dest: '<%= paths.dist %>/assets'
+            }, {
+                expand: true,
+                cwd: '<%= paths.app %>/resources/locales',
+                src: '**/*',
+                dest: '<%= paths.dist %>/resources/locales'
             }]
         }
     },

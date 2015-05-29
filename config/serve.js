@@ -35,6 +35,7 @@ module.exports.tasks = {
                 src: [
                     '<%= paths.server %>/styles/main.css',
                     '<%= paths.server %>/assets/**/*',
+                    '<%= paths.server %>/resources/**/*',
                     '<%= paths.server %>/scripts/*.js',
                     '<%= paths.server %>/*.html',
                     'Gruntfile.js'
@@ -51,7 +52,7 @@ module.exports.tasks = {
         },
         js: {
             files: ['<%= paths.app %>/{,**/}*.js'],
-            tasks: ['newer:jshint', 'newer:jscs'],
+            tasks: ['newer:jshint'],
             options: {
                 spawn: false
             }
@@ -65,6 +66,10 @@ module.exports.tasks = {
         },
         assets: {
             files: ['<%= paths.app %>/assets/**/*'],
+            tasks: 'newer:copy:server'
+        },
+        resources: {
+            files: ['<%= paths.app %>/resources/**/*'],
             tasks: 'newer:copy:server'
         },
         html: {
@@ -84,6 +89,11 @@ module.exports.tasks = {
                 cwd: '<%= paths.app %>/assets',
                 src: '**/*',
                 dest: '<%= paths.server %>/assets'
+            }, {
+                expand: true,
+                cwd: '<%= paths.app %>/resources/locales',
+                src: '**/*',
+                dest: '<%= paths.server %>/resources/locales'
             }]
         }
     },

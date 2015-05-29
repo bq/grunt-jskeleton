@@ -3,7 +3,6 @@
 /* global module */
 
 module.exports.tasks = {
-
     mochaTest: {
         test: {
             options: {
@@ -15,7 +14,6 @@ module.exports.tasks = {
             src: 'test/unit/suite.js'
         }
     },
-
     nightwatch: {
         options: {
             config_path: './test/selenium/config.json',
@@ -28,6 +26,5 @@ module.exports.tasks = {
                 }
             }
         }
-
     }
-}
+};
