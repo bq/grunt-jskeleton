@@ -45,6 +45,7 @@ module.exports = require('gruntfile')(function(grunt) {
         }
         grunt.task.run([
             'clean:server',
+            'env:browser',
             '_compile:server',
             'browserSync:server',
             'watch'
@@ -53,6 +54,7 @@ module.exports = require('gruntfile')(function(grunt) {
 
     grunt.registerTask('build', 'Generates the package for distribution', [
         'clean:dist',
+        'env:browser',
         '_compile:dist',
         'filerev:dist',
         'usemin'
@@ -60,6 +62,7 @@ module.exports = require('gruntfile')(function(grunt) {
 
     grunt.registerTask('serve:benchmark', 'Generates documentation and reports', [
         'clean:server',
+        'env:browser',
         'plato:server',
         'browserSync:server',
         'watch'

@@ -14,6 +14,11 @@ module.exports.tasks = {
             }
         }
     },
+    env: {
+        browser: {
+            NODE_ENV: 'browser',
+        }
+    },
     jshint: {
         options: {
             jshintrc: '.jshintrc',
