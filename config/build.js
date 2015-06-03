@@ -48,14 +48,9 @@ module.exports.tasks = {
             dest: '<%= paths.dist %>/styles/main.css'
         }
     },
-    autoprefixer: {
+    postcss: {
         dist: {
-            files: [{
-                expand: true,
-                cwd: '<%= paths.dist %>/styles',
-                src: '{,*/}*.css',
-                dest: '<%= paths.dist %>/styles'
-            }]
+            src: '<%= paths.dist %>/styles/main.css'
         }
     },
     svgstore: {

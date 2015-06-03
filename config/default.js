@@ -1,6 +1,8 @@
 'use strict';
 
 /* global require, module */
+var autoprefixer = require('autoprefixer-core');
+var csswring = require('csswring');
 var jshintStylish = require('jshint-stylish');
 var debowerify = require('debowerify');
 var htmlbarsify = require('htmlbarsify');
@@ -32,14 +34,19 @@ module.exports.tasks = {
         },
         src: ['<%= paths.server %>/styles/{,**/}*.css']
     },
-    autoprefixer: {
-        options: {
-            browsers: ['last 2 version', 'ie 9']
-        }
-    },
     sass: {
         options: {
             includePaths: ['bower_components']
+        }
+    },
+    postcss: {
+        options: {
+            processors: [
+                autoprefixer({
+                    browsers: 'last 1 version'
+                }),
+                csswring // minify css
+            ]
         }
     },
     svgstore: {

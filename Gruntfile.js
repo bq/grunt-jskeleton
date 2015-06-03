@@ -101,14 +101,13 @@ module.exports = require('gruntfile')(function(grunt) {
     grunt.registerTask('_minify', 'Minifiy the code and assets (internal use only)', [
         'uglify',
         'htmlmin',
-        'cssmin',
         'imagemin',
         'svgmin'
     ]);
 
     grunt.registerTask('_compile:dist', 'Build compile process (internal use only)', [
         'sass:dist',
-        'autoprefixer:dist',
+        'postcss:dist',
         '_review:js',
         'copy:dist',
         'svgstore:dist',
@@ -118,7 +117,7 @@ module.exports = require('gruntfile')(function(grunt) {
 
     grunt.registerTask('_compile:server', 'Server compile process (internal use only)', [
         'sass:server',
-        'autoprefixer:server',
+        'postcss:server',
         '_review:js',
         'copy:server',
         'svgstore:server',

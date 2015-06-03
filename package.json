@@ -1,6 +1,6 @@
 {
     "name": "grunt-jskeleton",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "JSkeleton application Gruntfile",
     "main": "Gruntfile.js",
     "repository": {
@@ -24,25 +24,27 @@
     ],
     "license": "MIT",
     "dependencies": {
+        "autoprefixer-core": "5.2.0",
+        "csswring": "3.0.5",
         "debowerify": "1.2.1",
-        "grunt-autoprefixer": "3.0.0",
         "grunt-aws-s3": "0.13.1",
+        "grunt-aws-s3-gzip": "0.10.1",
         "grunt-browser-sync": "2.1.2",
         "grunt-contrib-clean": "0.6.0",
         "grunt-contrib-concat": "0.5.1",
         "grunt-contrib-copy": "0.8.0",
         "grunt-contrib-csslint": "0.4.0",
-        "grunt-contrib-cssmin": "0.12.2",
         "grunt-contrib-htmlmin": "0.4.0",
         "grunt-contrib-imagemin": "0.9.4",
         "grunt-contrib-jshint": "0.11.2",
         "grunt-contrib-uglify": "0.9.1",
         "grunt-contrib-watch": "0.6.1",
+        "grunt-env": "0.4.4",
         "grunt-filerev": "2.3.1",
-        "grunt-env": "^0.4.4",
         "grunt-mocha-test": "0.12.7",
         "grunt-newer": "1.1.0",
         "grunt-plato": "1.2.1",
+        "grunt-postcss": "^0.4.0",
         "grunt-release": "0.12.0",
         "grunt-sass": "1.0.0",
         "grunt-svgmin": "2.0.1",
@@ -56,8 +58,5 @@
         "load-grunt-configs": "0.4.3",
         "through": "2.3.7",
         "time-grunt": "1.1.1"
-    },
-    "devDependencies": {
-        "grunt-aws-s3-gzip": "0.10.1"
     }
 }

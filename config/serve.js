@@ -1,6 +1,6 @@
 'use strict';
 
-/* global module */
+/* global module, require */
 
 module.exports.tasks = {
     clean: {
@@ -59,18 +59,18 @@ module.exports.tasks = {
         },
         styles: {
             files: ['<%= paths.app %>/styles/{,*/}*.scss'],
-            tasks: 'sass:server',
+            tasks: ['sass:server', 'autoprefixer:server', 'csslint'],
             options: {
                 spawn: false
             }
         },
         assets: {
             files: ['<%= paths.app %>/assets/**/*'],
-            tasks: 'newer:copy:server'
+            tasks: ['newer:copy:server']
         },
         resources: {
             files: ['<%= paths.app %>/resources/**/*'],
-            tasks: 'newer:copy:server'
+            tasks: ['newer:copy:server']
         },
         html: {
             files: ['<%= paths.app %>/*.html'],
@@ -110,6 +110,14 @@ module.exports.tasks = {
         server: {
             src: '<%= paths.server %>/styles/main.css',
             dest: '<%= paths.server %>/styles/main.css'
+        }
+    },
+    postcss: {
+        server: {
+            options: {
+                map: true,
+            },
+            src: '<%= paths.server %>/styles/main.css'
         }
     },
     svgstore: {
