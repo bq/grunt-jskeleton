@@ -71,12 +71,17 @@ module.exports.tasks = {
         }
     },
     usemin: {
+        js: ['<%= paths.dist %>/scripts/*.js'],
+        html: ['<%= paths.dist %>/*.html'],
+        css: ['<%= paths.dist %>/styles/*.css'],
         options: {
-            assetsDirs: ['<%= paths.dist %>']
-        },
-        js: ['<%= paths.dist %>/scripts/{,*/}*.js'],
-        html: ['<%= paths.dist %>/{,*/}*.html'],
-        css: ['<%= paths.dist %>/styles/{,*/}*.css']
+            assetsDirs: ['<%= paths.dist %>'],
+            patterns: {
+                js: [
+                    [/["']([^:"']+\.(?:png|gif|jpe?g|svg))(#.+)?["']/img, 'Update JavaScript with assets in strings']
+                ]
+            }
+        }
     },
     uglify: {
         dist: {
