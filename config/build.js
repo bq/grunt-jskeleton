@@ -93,19 +93,6 @@ module.exports.tasks = {
             }]
         }
     },
-    cssmin: {
-        dist: {
-            options: {
-                banner: '/*! JSkeleton application - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
-            },
-            files: [{
-                expand: true,
-                cwd: '<%= paths.dist %>/styles',
-                src: 'main.css',
-                dest: '<%= paths.dist %>/styles'
-            }]
-        }
-    },
     htmlmin: {
         dist: {
             options: {
