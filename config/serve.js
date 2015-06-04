@@ -1,6 +1,6 @@
 'use strict';
 
-/* global module, require */
+/* global module */
 
 module.exports.tasks = {
     clean: {
@@ -59,7 +59,7 @@ module.exports.tasks = {
         },
         styles: {
             files: ['<%= paths.app %>/styles/{,*/}*.scss'],
-            tasks: ['sass:server', 'autoprefixer:server', 'csslint'],
+            tasks: ['sass:server', 'postcss:server', 'csslint'],
             options: {
                 spawn: false
             }
@@ -103,12 +103,6 @@ module.exports.tasks = {
         },
         server: {
             src: '<%= paths.app %>/styles/main.scss',
-            dest: '<%= paths.server %>/styles/main.css'
-        }
-    },
-    autoprefixer: {
-        server: {
-            src: '<%= paths.server %>/styles/main.css',
             dest: '<%= paths.server %>/styles/main.css'
         }
     },
