@@ -119,7 +119,7 @@ module.exports.tasks = {
             options: {
                 includedemo: true
             },
-            src: '<%= paths.server %>/assets/svg/*.svg',
+            src: '<%= paths.server %>/assets/svg/sprite/*.svg',
             dest: '<%= paths.server %>/assets/svg/defs.svg'
         }
     }

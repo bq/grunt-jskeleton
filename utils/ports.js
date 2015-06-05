@@ -1,3 +1,7 @@
+'use strict';
+
+/* global module */
+
 /*
     Exports application ports, randomized if "--random-ports" option is used with any grunt task.
  */
@@ -24,4 +28,4 @@ module.exports = function(grunt) {
         livereload: LIVERELOAD_PORT,
         selenium: SELENIUM_PORT
     };
-}
+};

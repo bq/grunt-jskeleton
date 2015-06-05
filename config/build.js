@@ -6,6 +6,9 @@ module.exports.tasks = {
     clean: {
         dist: {
             src: ['<%= paths.dist %>']
+        },
+        svg_sprite: {
+            src: ['<%= paths.dist %>/assets/svg/sprite']
         }
     },
     watchify: {
@@ -55,7 +58,7 @@ module.exports.tasks = {
     },
     svgstore: {
         dist: {
-            src: '<%= paths.dist %>/assets/svg/*.svg',
+            src: '<%= paths.dist %>/assets/svg/sprite/*.svg',
             dest: '<%= paths.dist %>/assets/svg/defs.svg'
         }
     },

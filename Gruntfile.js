@@ -102,7 +102,9 @@ module.exports = require('gruntfile')(function(grunt) {
         'uglify',
         'htmlmin',
         'imagemin',
-        'svgmin'
+        'svgmin',
+        'svgstore:dist',
+        'clean:svg_sprite'
     ]);
 
     grunt.registerTask('_compile:dist', 'Build compile process (internal use only)', [
@@ -110,7 +112,6 @@ module.exports = require('gruntfile')(function(grunt) {
         'postcss:dist',
         '_review:js',
         'copy:dist',
-        'svgstore:dist',
         'watchify:dist',
         '_minify'
     ]);
