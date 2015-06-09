@@ -68,6 +68,10 @@ module.exports.tasks = {
             files: ['<%= paths.app %>/assets/**/*'],
             tasks: ['newer:copy:server']
         },
+        svg_sprite: {
+            files: ['<%= paths.server %>/assets/svg/sprite/*.svg'],
+            tasks: ['svgstore']
+        }
         resources: {
             files: ['<%= paths.app %>/resources/**/*'],
             tasks: ['newer:copy:server']
